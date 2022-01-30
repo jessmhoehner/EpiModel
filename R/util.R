@@ -368,3 +368,19 @@ as.networkLite.network <- function(x, ...) {
 as.networkLite.networkLite <- function(x, ...) {
   x
 }
+
+#' @rdname networkLitemethods
+#' @export
+to.network.networkLite <- function(x, ...) {
+  rv <- network(as.edgelist(x))
+
+  for(name in list.network.attributes(x)) {
+    rv %n% name <- x %n% name
+  }
+  
+  for(name in list.vertex.attributes(x)) {
+    rv %v% name <- x %v% name
+  }
+  
+  rv
+}
