@@ -100,7 +100,7 @@ networkLite.edgelist <- function(x, attr = list(), ...) {
   nw <- list(el = x,
              attr = attr,
              gal = attributes(x)[setdiff(names(attributes(x)),
-                                         c("class", "dim", "vnames"))])
+                                         c("class", "dim", "vnames", "mnext"))])
 
   # network size attribute is required
   if (is.null(nw$gal[["n"]])) {
