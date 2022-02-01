@@ -357,7 +357,7 @@ as.networkLite.network <- function(x, ...) {
     vertex_attributes[[name]] <- x %v% name
   }
   rv <- networkLite(edgelist, vertex_attributes)
-  for (name in list.network.attributes(x)) {
+  for (name in setdiff(list.network.attributes(x), c("mnext"))) {
     rv$gal[[name]] <- x %n% name
   }
   rv
