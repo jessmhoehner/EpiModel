@@ -372,10 +372,7 @@ as.networkLite.networkLite <- function(x, ...) {
 #' @rdname networkLitemethods
 #' @export
 to.network.networkLite <- function(x, ...) {
-  rv <- network.initialize(network.size(x), directed = x %n% "directed", bipartite = x %n% "bipartite")
-
-  el <- as.edgelist(x)
-  add.edges(rv, tail = el[,2], head = el[,1])
+  rv <- as.network(as.edgelist(x), matrix.type = "edgelist", directed = x %n% "directed", bipartite = x %n% "bipartite")
 
   for(name in list.network.attributes(x)) {
     rv %n% name <- x %n% name
